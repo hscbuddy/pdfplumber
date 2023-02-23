@@ -240,11 +240,17 @@ class WordExtractor:
         x0, top, x1, bottom = objects_to_bbox(ordered_chars)
         doctop_adj = ordered_chars[0]["doctop"] - ordered_chars[0]["top"]
         upright = ordered_chars[0]["upright"]
+        bold = False
 
         direction = 1 if (self.horizontal_ltr if upright else self.vertical_ttb) else -1
 
+        for i in ordered_chars:
+            if "Bold" in i["fontname"]:
+                bold = True
+
         word = {
             "text": "".join(map(itemgetter("text"), ordered_chars)),
+            "bold":bold,
             "x0": x0,
             "x1": x1,
             "top": top,
