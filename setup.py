@@ -2,7 +2,7 @@ import os
 
 from setuptools import setup, find_packages
 
-NAME = "pdfplumber"
+NAME = "hsc-pdfplumber"
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 version_ns = {}
@@ -13,7 +13,7 @@ def _open(subpath):
     return open(path, encoding="utf-8")
 
 
-with _open(NAME + "/_version.py") as f:
+with _open("pdfplumber/_version.py") as f:
     exec(f.read(), {}, version_ns)
 
 with _open("requirements.txt") as f:
@@ -45,7 +45,7 @@ setup(
     tests_require=base_reqs + dev_reqs,
     python_requires=">=3.7",
     install_requires=base_reqs,
-    entry_points={"console_scripts": ["pdfplumber = pdfplumber.cli:main"]},
+    entry_points={"console_scripts": ["hsc-pdfplumber = pdfplumber.cli:main"]},
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
